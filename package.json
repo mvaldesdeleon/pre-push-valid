@@ -1,0 +1,21 @@
+{
+  "name": "pre-push-valid",
+  "version": "1.0.0",
+  "description": "Checks the upstream refs during a pre-push githook",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "bin": "index.js",
+  "dependencies": {
+    "semver": "^5.5.0",
+    "stream-to-string": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.2.0"
+  },
+  "repository": "mvaldesdeleon/pre-push-valid",
+  "keywords": ["githooks", "pre-push", "branch", "tag", "git", "validation", "semver", "gitflow"],
+  "author": "Martin Valdes de Leon <m.valdesdeleon@gmail.com>",
+  "license": "MIT"
+}
