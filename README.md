@@ -12,7 +12,7 @@ This script parses this data in order to enforce [gitflow](https://www.atlassian
 With [npm](https://npmjs.org) do:
 
 ```
-npm install pre-push-valid
+npm install pre-push-valid --save-dev
 ```
 
 The easiest way to get started with githooks is via [husky](https://github.com/typicode/husky):
