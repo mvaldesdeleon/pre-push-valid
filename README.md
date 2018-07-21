@@ -8,7 +8,33 @@ The [githooks docs](https://git-scm.com/docs/githooks#_pre_push) for _pre-push_ 
 
 This script parses this data in order to enforce [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
 
-# roadmap
+# Install
+With [npm](https://npmjs.org) do:
+
+```
+npm install pre-push-valid
+```
+
+The easiest way to get started with githooks is via [husky](https://github.com/typicode/husky):
+
+```
+npm install husky@next --save-dev
+```
+
+Once it's installed, edit your `package.json` like so:
+
+```
+// package.json
+{
+    "husky": {
+        "hooks": {
+            "pre-commit": "echo \"$HUSKY_GIT_STDIN\" | pre-push-valid"
+        }
+    }
+}
+```
+
+# Roadmap
 
 Right now this is a proof-of-concept, with all configuration settings hardcoded to fit my needs. This includes a few subtleties, such as disallowing `v`-prefixed tags.
 
@@ -18,15 +44,10 @@ Ideally, all of this configuration should be externalized following the current 
 * A dot-rc-file in json format.
 * A js file module exporting the configuration.
 
+Also, some CLI parameters could be added for debugging, coloring, accepting input from the command-line rather than stdin, to avoid the ugly `echo`, etc.
+
 If you think this is interesting please do not hesitate to contribute!
 
-# install
-with [npm](https://npmjs.org) do:
-
-```
-npm install pre-push-valid
-```
-
-# license
+# License
 
 MIT
