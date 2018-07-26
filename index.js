@@ -3,9 +3,15 @@
 const semver = require('semver');
 const toString = require('stream-to-string');
 
-process.stdin.setEncoding('utf8');
-
 const toLines = text => text.split('\n');
+
+const validBranchNameSegment = /^[a-z0-9-]+$/;
+
+const isValidBranchNameSegment = nameSegment => validBranchNameSegment
+    .test(nameSegment);
+
+const isTruthy = error => error;
+
 const toError = line => {
     const upstreamRef = line.split(' ')[2];
     const refSections = upstreamRef.split('/');
@@ -22,6 +28,12 @@ const toError = line => {
             if (refSections.length < 4) {
                 return `${upstreamRef}: ${branchType} must be a prefix`;
             }
+
+            const branchNameSegments = refSections.slice(3);
+
+            if (!branchNameSegments.every(isValidBranchNameSegment)) {
+                return `${upstreamRef}: ${refSections.slice(2).join('/')} is not a valid branch name. use only lowercase letters, numbers or hyphens.`;
+            }
         } else {
             return `${upstreamRef}: non-gitflow branch`;
         }
@@ -36,11 +48,12 @@ const toError = line => {
         return `${upstreamRef}: invalid refType`;
     }
 };
-const isValid = error => error;
+
+process.stdin.setEncoding('utf8');
 
 toString(process.stdin)
     .then(stdin => {
-        return toLines(stdin).filter(isValid).map(toError).filter(isValid);
+        return toLines(stdin).filter(isTruthy).map(toError).filter(isTruthy);
     })
     .then(errors => {
         if (errors.length) {

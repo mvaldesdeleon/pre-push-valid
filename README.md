@@ -8,6 +8,14 @@ The [githooks docs](https://git-scm.com/docs/githooks#_pre_push) for _pre-push_ 
 
 This script parses this data in order to enforce [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
 
+# Convention
+
+* Branch names must use only lowercase characters, numbers and hyphens.
+* Only two singleton branches are allowed: `master` and `develop`.
+* Only three prefix branches are allowed: `feature`, `release`, and `hotfix`.
+* Prefix branches accept an arbitrary number of sub-prefixes (i.e., `feature/dashboard/widget` is a valid branch name).
+* Tags must conform to [semver](https://semver.org/), **without** the leading `v` (i.e., `1.2.3` will be valid, `v1.2.3` will be invalid).
+
 # Install
 With [npm](https://npmjs.org) do:
 

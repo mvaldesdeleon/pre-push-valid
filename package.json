@@ -1,6 +1,6 @@
 {
   "name": "pre-push-valid",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Checks the upstream refs during a pre-push githook",
   "main": "index.js",
   "scripts": {
